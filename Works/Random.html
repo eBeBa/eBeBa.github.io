@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    <style>
+        body{
+            background-color: gray;
+            text-align: center;
+            font-size: 50px;
+            margin: 400px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var myNames = ["Эрдэнэбаяр", "Гүнбилэг", "Багш", "Эрдэнэтөгс"]
+        var myHool = ["Цуйван", "Будаатай хуурга", "Ногоотой шөл", "Мантуун бууз"]
+        var myActions = ["идэв"]
+        var myRandomFriends = myNames[Math.floor(Math.random()*myNames.length)]
+        var myRandomPlaces = myHool[Math.floor(Math.random()*myHool.length)]
+        var myRandomActions = myActions[Math.floor(Math.random()*myActions.length)]
+        document.write(myRandomFriends + " " + myRandomPlaces + " " + myRandomActions)
+    </script>
+</body>
+</html> 

@@ -1,0 +1,119 @@
+<!Doctype html>
+<html>
+    <head>
+      <style>
+          body{
+              background-color: gray;
+              text-align: center;
+              font-size: 30px;
+              text-align: center;
+          }
+          .bichig{
+              font-size: 50px;
+              text-align: center;
+          }
+          button{
+            background-color:#151515;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+          }
+          .aa{
+            margin: 100px;
+          }
+      </style>
+    </head>
+<body>
+  <div class="aa">
+    <div class="bichig" id="ymrNegenDiv">00:00:00</div>
+    <div class="bichig">
+        <button onclick="toggleStart()">start</button>
+        <button onclick="toggleReset()">reset</button>
+        <button id="naruto" onclick="toggleLap()" disabled>lap</button>
+    </div>
+  </div>
+    <div id="laps"></div>
+        <script>
+           var display = document.querySelector("#ymrNegenDiv")
+           var startStopButton = document.querySelector("button")
+           var minutes = 0
+           var seconds = 0
+           var miliseconds = 0
+           var displayMinutes
+           var displaySeconds
+           var displayMiliseconds
+           var isPaused = true
+           var intervalId   
+           var laps = document.querySelector("#laps")
+           var lapGoku = 1
+           var lapButton = document.getElementById("naruto")
+           function toggleStart(){
+             if(isPaused){
+             startStopButton.innerHTML = "stop"
+              intervalId = setInterval(nigeru,10)
+              lapButton.disabled = false 
+             }  
+           else{
+            startStopButton.innerHTML = "start"
+             clearInterval(intervalId)
+             lapButton.disabled = true
+           } 
+           isPaused = !isPaused
+           }
+           function nigeru(){
+             miliseconds++
+             if(miliseconds == 100){
+               seconds++
+               miliseconds = 0
+             }
+             if(seconds == 60){
+               minutes++
+               seconds = 0
+             }
+             if(minutes < 10){
+               displayMinutes = "0" + minutes 
+             }
+             else {
+               displayMinutes = minutes 
+             }
+             if(seconds < 10){
+               displaySeconds = "0" + seconds 
+             }
+             else {
+               displaySeconds = seconds
+             }
+             if(miliseconds < 10){
+               displayMiliseconds = "0" + miliseconds 
+             }
+             else {
+               displayMiliseconds = miliseconds
+             }
+            display.innerHTML = displayMinutes +":" + displaySeconds + ":" +  displayMiliseconds
+           }
+           function toggleReset() {
+             display.innerHTML = "00:00:00"
+             minutes = 0 
+             seconds = 0
+             miliseconds = 0 
+             laps.innerHTML = ""
+             lapGoku = 1
+            if(!isPaused)
+            toggleStart()
+           }
+           function toggleLap(){
+            var lapGohan = document.createElement("div")
+            var lapJikan = document.createElement("div")
+            lapGohan.innerHTML = lapGoku
+            lapGoku++
+            lapJikan.innerHTML =  displayMinutes +":" + displaySeconds + ":" +  displayMiliseconds
+            laps.append(lapJikan,lapGohan)
+           }
+
+           </script>
+</body>
+</html>

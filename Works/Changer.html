@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>COlor Changer</title>
+      <style>
+          body{
+              background-color: gray;
+              text-align: center;
+          }
+          input{
+              border-radius: 10px;
+          }
+          button{
+              border-radius: 10px;
+             
+          }
+          .aa{
+              margin: 400px;
+          }
+      </style>
+</head>
+<body>
+    <div class="aa">
+        <button onclick="unguSolih()">Өнгө солих</button>
+        <input type="text" id="colorInput">
+        <button onclick="unguNemeh()">Өнгө нэмэх</button>
+    </div>
+    <script>
+            var MyColors=["red","green","blue","black","aqua"]
+            var count = 0
+            document.body(unguSolih)
+            function unguSolih(){
+            document.body.style.backgroundColor = MyColors[count]
+            count++
+            if(count == MyColors.length){
+            count = 0
+            }
+            }
+            function unguNemeh(){
+            MyColors.push(colorInput.value)
+            count = MyColors.length - 1
+            unguSolih()
+            colorInput.value = ""
+            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gif Search</title>
+        <style>
+            body{
+              margin: 0;
+              padding: 0;
+              text-align: center;
+              background-color: gray;
+            }
+            button{
+                border-radius: 15px;
+            }
+            input{
+                border-radius: 15px;
+            }
+            .mydivcontainer{
+                float: none;
+            }
+
+      </style>
+      </head>
+    <body>
+      <div class="container_project" >
+          <div class="myinputcontainer">
+                <div class="mydivcontainer2">
+                  <input id="myinput">
+                  <button onclick="getDATA()" id="mybutton">Search</button>
+                </div>
+          </div>
+          <div id="mydivcontainer" class="mydivcontainer" >
+          </div>
+      </div>
+      <script>
+          let API = "https://api.giphy.com/v1/gifs/search?api_key=GL5yuz2p7N1K0bPDZHKRcqcbwmW2ejK5&q=";
+          let restAPI = "&limit=6";
+          let GifName;
+          let myinput = document.getElementById("myinput");
+          let myImg;
+          let myBody = document.getElementById("mybody");
+          let myButton = document.getElementById("mybutton"); 
+          let mydivcontainer = document.getElementById("mydivcontainer");
+          let count = 0;
+          function getDATA(){
+              count++;
+              GifName = myinput.value;
+              myinput.value = "";
+              fetch(API + GifName + restAPI).then(function(response){
+                  return response.json();
+              }).then(function(url){
+                  for(let i = 0; i < url.data.length; i++){
+                  myImg = document.createElement("img");
+                  myImg.src = url.data[i].images.downsized.url;
+                  mydivcontainer.append(myImg);     
+              }})
+              if(count == 2){count = 1;mydivcontainer.innerHTML = "";}}
+        </script>
+    </body>
+</html>
